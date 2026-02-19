@@ -2,14 +2,34 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <title>Plano de Estudos – CIDASC (Analista TIC)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plano de Estudos - CIDASC (Rafael)</title>
     <style>
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
+
+      :root {
+        --bg-main: #020617;
+        --bg-elevated: #020617;
+        --bg-card: #020617;
+        --border-subtle: #1f2937;
+        --text-primary: #e5e7eb;
+        --text-secondary: #9ca3af;
+        --accent: #4f46e5;
+        --accent-soft: #312e81;
+        --green: #059669;
+        --yellow: #f59e0b;
+        --blue: #3b82f6;
+        --purple: #8b5cf6;
+        --danger: #f97373;
+        --radius-lg: 18px;
+        --radius-md: 14px;
+        --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.7);
+      }
+
       body {
         font-family:
           system-ui,
@@ -17,181 +37,466 @@
           BlinkMacSystemFont,
           "Segoe UI",
           sans-serif;
-        background: #0f172a;
-        color: #e5e7eb;
+        background: radial-gradient(
+          circle at top,
+          #111827 0%,
+          #020617 40%,
+          #000 100%
+        );
+        color: var(--text-primary);
         padding: 24px;
       }
+
       .app {
-        max-width: 1100px;
+        max-width: 1200px;
         margin: 0 auto;
-        background: #020617;
-        border-radius: 12px;
-        border: 1px solid #1f2937;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        background: linear-gradient(to bottom, #020617, #020617f0);
+        border-radius: 22px;
+        border: 1px solid #111827;
+        box-shadow: var(--shadow-soft);
         overflow: hidden;
       }
+
+      /* HEADER */
+
       header {
-        padding: 24px 24px 16px 24px;
-        background: radial-gradient(circle at top left, #4f46e5, #0f172a 55%);
+        padding: 24px 24px 20px 24px;
+        background: radial-gradient(
+          circle at top left,
+          #4f46e5 0%,
+          #020617 55%
+        );
         border-bottom: 1px solid #1f2937;
       }
-      header h1 {
-        font-size: 24px;
-        font-weight: 700;
-        color: #f9fafb;
-        margin-bottom: 4px;
-      }
-      header p {
-        font-size: 13px;
-        color: #e5e7eb;
-        opacity: 0.9;
-      }
-      .tagline {
-        margin-top: 8px;
-        font-size: 12px;
-        color: #c7d2fe;
-      }
-      .tabs {
+
+      .header-top {
         display: flex;
-        gap: 8px;
-        padding: 12px 16px 0 16px;
-        border-bottom: 1px solid #111827;
-        background: #020617;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 16px;
       }
-      .tab-btn {
-        flex: 1;
-        padding: 10px 12px;
+
+      .title-block h1 {
+        font-size: 26px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .title-icon {
+        width: 26px;
+        height: 26px;
         border-radius: 999px;
-        border: 1px solid #1f2937;
-        background: #020617;
-        color: #e5e7eb;
-        font-size: 13px;
-        font-weight: 500;
-        cursor: pointer;
+        background: rgba(15, 23, 42, 0.8);
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 6px;
-        transition: all 0.18s ease;
+        font-size: 16px;
       }
-      .tab-btn span.icon {
-        font-size: 15px;
-      }
-      .tab-btn.active {
-        background: linear-gradient(135deg, #4f46e5, #6366f1);
-        border-color: transparent;
-        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.45);
-      }
-      .tab-btn:hover:not(.active) {
-        border-color: #4f46e5;
-        background: #020617;
-      }
-      .content {
-        padding: 18px 18px 24px 18px;
-      }
-      .day-panel {
-        display: none;
-        animation: fadeIn 0.22s ease-out;
-      }
-      .day-panel.active {
-        display: block;
-      }
-      .day-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        gap: 12px;
-        margin-bottom: 12px;
-        border-bottom: 1px solid #111827;
-        padding-bottom: 10px;
-      }
-      .day-title {
-        font-size: 18px;
-        font-weight: 600;
+
+      .title-block p {
+        font-size: 13px;
         color: #e5e7eb;
+        opacity: 0.9;
+        margin-top: 4px;
       }
-      .day-sub {
+
+      .badges {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
         font-size: 12px;
-        color: #9ca3af;
       }
-      .badge {
+
+      .badge-pill {
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        background: rgba(15, 23, 42, 0.65);
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        font-size: 11px;
-        background: #111827;
-        color: #9ca3af;
       }
-      .badge span.dot {
+
+      .badge-dot {
         width: 8px;
         height: 8px;
         border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .badge-pill.br {
+        border-color: rgba(34, 197, 94, 0.5);
+      }
+      .badge-pill.br .badge-dot {
         background: #22c55e;
       }
-      .grid {
+      .badge-pill.log {
+        border-color: rgba(245, 158, 11, 0.5);
+      }
+      .badge-pill.log .badge-dot {
+        background: #facc15;
+      }
+      .badge-pill.ti {
+        border-color: rgba(59, 130, 246, 0.5);
+      }
+      .badge-pill.ti .badge-dot {
+        background: #3b82f6;
+      }
+      .badge-pill.esp {
+        border-color: rgba(168, 85, 247, 0.5);
+      }
+      .badge-pill.esp .badge-dot {
+        background: #a855f7;
+      }
+
+      .header-bottom {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
-        margin-top: 8px;
+        margin-top: 4px;
       }
-      .card {
-        background: #020617;
-        border-radius: 10px;
-        border: 1px solid #111827;
-        padding: 12px 12px 10px 12px;
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
+
+      .slot {
+        background: rgba(15, 23, 42, 0.7);
+        border-radius: 16px;
+        border: 1px solid rgba(15, 23, 42, 0.9);
+        padding: 12px 14px;
+        font-size: 12px;
+        color: var(--text-secondary);
       }
-      .card-main {
-        flex: 1;
-      }
-      .card-title {
-        font-size: 13px;
-        font-weight: 600;
-        color: #e5e7eb;
+
+      .slot strong {
+        display: block;
+        font-size: 14px;
+        color: var(--text-primary);
         margin-bottom: 2px;
       }
-      .card-time {
-        font-size: 11px;
-        color: #9ca3af;
-        margin-bottom: 4px;
+
+      /* COUNTDOWN */
+
+      .countdown {
+        margin-top: 10px;
+        background: radial-gradient(circle at top, #1d2745, #020617 55%);
+        border-radius: 16px;
+        border: 1px solid #111827;
+        padding: 14px 16px 18px 16px;
+        color: var(--text-secondary);
       }
-      .card-list {
+
+      .count-title {
         font-size: 11px;
-        color: #d1d5db;
-        list-style: disc;
-        margin-left: 16px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .count-title span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .count-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 6px;
+      }
+
+      .count-box {
+        background: rgba(15, 23, 42, 0.85);
+        border-radius: 12px;
+        border: 1px solid #111827;
+        padding: 10px 6px;
+        text-align: center;
+      }
+
+      .count-box .num {
+        font-size: 22px;
+        font-weight: 700;
+        color: #e5e7eb;
+      }
+
+      .count-box .label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #9ca3af;
         margin-top: 2px;
       }
-      .section-title {
-        margin-top: 16px;
-        margin-bottom: 6px;
-        font-size: 12px;
-        font-weight: 600;
-        color: #9ca3af;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      .rev-box {
-        margin-top: 8px;
+
+      /* TABS */
+
+      .tabs {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 10px 18px 10px 18px;
         background: #020617;
-        border-radius: 10px;
-        border: 1px solid #111827;
-        padding: 12px;
-        font-size: 11px;
-        color: #d1d5db;
+        border-bottom: 1px solid #111827;
+        scrollbar-width: thin;
       }
+
+      .tab {
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid #111827;
+        background: #020617;
+        color: var(--text-secondary);
+        font-size: 13px;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all 0.18s ease;
+      }
+
+      .tab.active {
+        background: linear-gradient(135deg, #4f46e5, #6366f1);
+        color: #f9fafb;
+        border-color: transparent;
+        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.45);
+      }
+
+      .tab:hover:not(.active) {
+        border-color: #4f46e5;
+        color: #e5e7eb;
+      }
+
+      /* PANELS */
+
+      main {
+        padding: 18px;
+      }
+
+      .day-panel {
+        display: none;
+        animation: fadeIn 0.24s ease-out;
+      }
+
+      .day-panel.active {
+        display: block;
+      }
+
+      .day-header {
+        margin-bottom: 10px;
+      }
+
+      .day-header h2 {
+        font-size: 22px;
+        margin-bottom: 4px;
+      }
+
+      .day-sub {
+        font-size: 12px;
+        color: var(--text-secondary);
+      }
+
+      .day-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        font-size: 11px;
+        color: var(--text-secondary);
+      }
+
+      .pill-time {
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid #1f2937;
+        background: #020617;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .pill-time span.icon {
+        font-size: 14px;
+      }
+
+      /* CARDS GRID */
+
+      .grid-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .card {
+        background: radial-gradient(
+          circle at top,
+          rgba(15, 23, 42, 0.9),
+          rgba(15, 23, 42, 0.96)
+        );
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-subtle);
+        padding: 14px 14px 12px 14px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.4;
+        pointer-events: none;
+      }
+
+      .card.br::before {
+        background: radial-gradient(
+          circle at top left,
+          rgba(34, 197, 94, 0.4),
+          transparent 55%
+        );
+      }
+      .card.log::before {
+        background: radial-gradient(
+          circle at top left,
+          rgba(245, 158, 11, 0.45),
+          transparent 55%
+        );
+      }
+      .card.ti::before {
+        background: radial-gradient(
+          circle at top left,
+          rgba(59, 130, 246, 0.45),
+          transparent 55%
+        );
+      }
+      .card.esp::before {
+        background: radial-gradient(
+          circle at top left,
+          rgba(168, 85, 247, 0.45),
+          transparent 55%
+        );
+      }
+
+      .card-inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 6px;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+
+      .card-title {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .card-title span.top {
+        font-size: 13px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .card-title span.icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+
+      .card-title span.tag {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: #e5e7eb;
+        opacity: 0.8;
+      }
+
+      .chip-time {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.6);
+        background: rgba(15, 23, 42, 0.9);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #e5e7eb;
+      }
+
+      .chip-time span.icon {
+        font-size: 12px;
+      }
+
+      .card ul {
+        margin-top: 6px;
+        margin-left: 14px;
+        font-size: 11px;
+        color: #e5e7eb;
+      }
+
+      .card ul li {
+        margin-bottom: 4px;
+      }
+
+      /* REV BOX (SEMANA FINAL) */
+
+      .rev-box {
+        margin-top: 10px;
+        background: radial-gradient(
+          circle at top,
+          rgba(79, 70, 229, 0.4),
+          rgba(15, 23, 42, 0.98)
+        );
+        border-radius: var(--radius-lg);
+        border: 1px solid #1f2937;
+        padding: 14px 16px;
+        font-size: 12px;
+        color: #e5e7eb;
+      }
+
+      .rev-section-title {
+        margin-top: 8px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: #c7d2fe;
+        margin-bottom: 2px;
+      }
+
       .rev-box ul {
         margin-left: 16px;
         margin-top: 4px;
         list-style: square;
       }
+
+      .rev-tip {
+        margin-top: 10px;
+        font-size: 11px;
+        color: #e5e7eb;
+        opacity: 0.9;
+      }
+
+      /* FOOTER */
+
       footer {
         border-top: 1px solid #111827;
-        padding: 8px 16px 10px 16px;
+        padding: 10px 16px 12px 16px;
         font-size: 11px;
         color: #6b7280;
         display: flex;
@@ -199,6 +504,7 @@
         gap: 8px;
         flex-wrap: wrap;
       }
+
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -209,15 +515,19 @@
           transform: translateY(0);
         }
       }
-      @media (max-width: 640px) {
-        header h1 {
-          font-size: 20px;
+
+      @media (max-width: 720px) {
+        header {
+          padding: 18px;
         }
-        .tabs {
-          flex-wrap: wrap;
+        .header-bottom {
+          grid-template-columns: 1fr;
         }
-        .tab-btn {
-          flex: 1 1 calc(50% - 4px);
+        .count-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        main {
+          padding: 14px;
         }
       }
     </style>
@@ -225,126 +535,211 @@
   <body>
     <div class="app">
       <header>
-        <h1>Plano de Estudos • CIDASC</h1>
-        <p>
-          Analista de Tecnologia da Informação e Comunicação (Sistemas e
-          Negócios)
-        </p>
-        <p class="tagline">
-          Segunda a sexta: ~2h/dia • Sábado e domingo: ~4h/dia • Até a prova
-          (15/03/2026)
-        </p>
+        <div class="header-top">
+          <div class="title-block">
+            <h1>
+              <span class="title-icon">🎓</span>
+              Plano de Estudos
+            </h1>
+            <p>CIDASC — Analista TIC (Sistemas e Negócios)</p>
+          </div>
+          <div class="badges">
+            <span class="badge-pill br"
+              ><span class="badge-dot"></span>Português</span
+            >
+            <span class="badge-pill log"
+              ><span class="badge-dot"></span>Lógico</span
+            >
+            <span class="badge-pill ti"
+              ><span class="badge-dot"></span>TI Geral</span
+            >
+            <span class="badge-pill esp"
+              ><span class="badge-dot"></span>TI Específico</span
+            >
+          </div>
+        </div>
+
+        <div class="header-bottom">
+          <div class="slot">
+            <strong>Seg – Sex</strong>
+            ~2 horas/dia • 30 min por matéria
+          </div>
+          <div class="slot">
+            <strong>Sáb – Dom</strong>
+            ~4 horas/dia • 1 hora por matéria
+          </div>
+        </div>
+
+        <div class="countdown">
+          <div class="count-title">
+            <span>⏱ CONTAGEM REGRESSIVA</span>
+            <span>📅 Prova: 15 de Março de 2026</span>
+          </div>
+          <div class="count-grid">
+            <div class="count-box">
+              <div class="num" id="cd-days">23</div>
+              <div class="label">Dias</div>
+            </div>
+            <div class="count-box">
+              <div class="num" id="cd-hours">00</div>
+              <div class="label">Horas</div>
+            </div>
+            <div class="count-box">
+              <div class="num" id="cd-mins">00</div>
+              <div class="label">Min</div>
+            </div>
+            <div class="count-box">
+              <div class="num" id="cd-secs">00</div>
+              <div class="label">Seg</div>
+            </div>
+          </div>
+        </div>
       </header>
 
-      <div class="tabs">
-        <button class="tab-btn active" data-day="segunda">
-          <span class="icon">📘</span>Segunda-feira
-        </button>
-        <button class="tab-btn" data-day="terca">
-          <span class="icon">📗</span>Terça-feira
-        </button>
-        <button class="tab-btn" data-day="quarta">
-          <span class="icon">📙</span>Quarta-feira
-        </button>
-        <button class="tab-btn" data-day="quinta">
-          <span class="icon">📒</span>Quinta-feira
-        </button>
-        <button class="tab-btn" data-day="sexta">
-          <span class="icon">📕</span>Sexta-feira
-        </button>
-        <button class="tab-btn" data-day="sabado">
-          <span class="icon">📝</span>Sábado
-        </button>
-        <button class="tab-btn" data-day="domingo">
-          <span class="icon">🧾</span>Domingo
-        </button>
-        <button class="tab-btn" data-day="revisao">
-          <span class="icon">🔁</span>Semana Final
-        </button>
-      </div>
+      <nav class="tabs">
+        <button class="tab active" data-target="segunda">Segunda</button>
+        <button class="tab" data-target="terca">Terça</button>
+        <button class="tab" data-target="quarta">Quarta</button>
+        <button class="tab" data-target="quinta">Quinta</button>
+        <button class="tab" data-target="sexta">Sexta</button>
+        <button class="tab" data-target="sabado">Sábado</button>
+        <button class="tab" data-target="domingo">Domingo</button>
+        <button class="tab" data-target="semana-final">Semana Final</button>
+      </nav>
 
-      <div class="content">
+      <main>
         <!-- SEGUNDA -->
         <section class="day-panel active" id="segunda">
           <div class="day-header">
-            <div>
-              <div class="day-title">Segunda-feira</div>
-              <div class="day-sub">
-                Foco em fundamentos de TI + leitura de Português
-              </div>
-            </div>
-            <div class="badge">
-              <span class="dot"></span> Carga aproximada: 2h/dia
+            <h2>Segunda-feira</h2>
+            <p class="day-sub">
+              Semanas 1–3: conteúdo novo + exercícios | Semana 4: revisão
+            </p>
+            <div class="day-meta">
+              <span
+                >Comece a semana fortalecendo base de Português, Lógico e
+                fundamentos de TI.</span
+              >
+              <span class="pill-time"
+                ><span class="icon">⏰</span>~2 horas</span
+              >
             </div>
           </div>
-          <div class="grid">
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Português</div>
-                <div class="card-time">
-                  30–40 min (fazendo questões e revisão rápida)
+
+          <div class="grid-cards">
+            <article class="card br">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top">
+                      <span class="icon">🇧🇷</span>Português
+                    </span>
+                    <span class="tag">Semanas 1–3: Conteúdo novo</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
                 </div>
-                <ul class="card-list">
+                <ul>
                   <li>
-                    Semana 1: Interpretação de textos (provas FEPESE, enunciados
-                    longos).
+                    Semana 1: Interpretação de textos — tema central,
+                    inferências, informações implícitas.
                   </li>
                   <li>
-                    Semana 2: Classes de palavras (pronome, verbo, conjunção).
+                    Semana 2: Classes de palavras — substantivos, adjetivos,
+                    verbos (regulares e irregulares).
                   </li>
-                  <li>Semana 3: Pontuação em períodos compostos.</li>
-                  <li>Semana 4: Revisão geral de questões erradas.</li>
+                  <li>
+                    Semana 3: Exercícios de fixação com questões de provas
+                    anteriores.
+                  </li>
+                  <li>Semana 4: Revisão das questões que você mais errou.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Raciocínio Lógico</div>
-                <div class="card-time">20–30 min (somente exercícios)</div>
-                <ul class="card-list">
-                  <li>Semana 1: Proposições simples e compostas.</li>
-                  <li>Semana 2: Tabelas-verdade e negações.</li>
-                  <li>Semana 3: Questões mistas de concursos.</li>
-                  <li>Semana 4: Revisão das questões que mais errou.</li>
+
+            <article class="card log">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top">
+                      <span class="icon">🧠</span>Raciocínio Lógico
+                    </span>
+                    <span class="tag">Semanas 1–3: Conteúdo novo</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
+                  <li>
+                    Semana 1: Proposições lógicas — conceito, conectivos (e, ou,
+                    se…então, se e somente se).
+                  </li>
+                  <li>
+                    Semana 2: Tabelas-verdade — construção e análise de
+                    proposições compostas.
+                  </li>
+                  <li>Semana 3: Resolução de 10 questões cronometradas.</li>
+                  <li>Semana 4: Revisão das questões com maior dificuldade.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Geral</div>
-                <div class="card-time">~1h por segunda-feira</div>
-                <ul class="card-list">
+
+            <article class="card ti">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top">
+                      <span class="icon">💻</span>TI Geral
+                    </span>
+                    <span class="tag">Semanas 1–3: Conteúdo novo</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Arquitetura de computadores (CPU, memória, I/O,
-                    sistemas de arquivos) + virtualização.
+                    Semana 1: Arquitetura de computadores — processador,
+                    memória, barramentos, pipeline.
                   </li>
                   <li>
-                    Semana 2: Estruturas de dados (listas, pilhas, filas,
-                    árvores, hash) e noção de complexidade.
+                    Semana 2: Sistemas operacionais — processos, threads,
+                    escalonamento (conceitos básicos).
                   </li>
                   <li>
-                    Semana 3: Programação OO (classe, objeto, herança,
-                    polimorfismo) com exemplos Java/C#.
+                    Semana 3: Estruturas de dados — listas, filas, pilhas, visão
+                    geral de árvores.
                   </li>
                   <li>
-                    Semana 4: Revisão desses 3 temas com questões e resumos.
+                    Semana 4: Revisão de resumo + 10 questões de
+                    arquitetura/estruturas.
                   </li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Específico</div>
-                <div class="card-time">~30 min extras (se tiver fôlego)</div>
-                <ul class="card-list">
+
+            <article class="card esp">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top">
+                      <span class="icon">🎯</span>TI Específico
+                    </span>
+                    <span class="tag">Semanas 1–3: Conteúdo novo</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Conceitos de DevOps, cultura, CI/CD e pipelines.
+                    Semana 1: DevOps & CI/CD — integração contínua, entrega
+                    contínua, pipelines.
                   </li>
-                  <li>Semana 2: Git (branch, merge, pull request, rebase).</li>
-                  <li>Semana 3: Docker (imagens, containers, Dockerfile).</li>
                   <li>
-                    Semana 4: Kubernetes/OpenShift (visão geral, pods,
-                    services).
+                    Semana 2: Git — comandos essenciais, branching (Git Flow,
+                    trunk-based).
+                  </li>
+                  <li>
+                    Semana 3: Microserviços — conceitos, comunicação síncrona e
+                    assíncrona.
+                  </li>
+                  <li>
+                    Semana 4: Revisão de anotações e questões conceituais.
                   </li>
                 </ul>
               </div>
@@ -355,68 +750,116 @@
         <!-- TERÇA -->
         <section class="day-panel" id="terca">
           <div class="day-header">
-            <div>
-              <div class="day-title">Terça-feira</div>
-              <div class="day-sub">Foco em redes, segurança e integrações.</div>
-            </div>
-            <div class="badge">
-              <span class="dot"></span> Carga aproximada: 2h/dia
+            <h2>Terça-feira</h2>
+            <p class="day-sub">
+              Aprofunde Português e trabalhe bem a parte numérica e de
+              redes/segurança.
+            </p>
+            <div class="day-meta">
+              <span
+                >Use a terça para consolidar regras e resolver problemas
+                numéricos.</span
+              >
+              <span class="pill-time"
+                ><span class="icon">⏰</span>~2 horas</span
+              >
             </div>
           </div>
-          <div class="grid">
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Português</div>
-                <div class="card-time">30–40 min</div>
-                <ul class="card-list">
-                  <li>Semana 1: Ortografia e acentuação.</li>
-                  <li>Semana 2: Regência verbal e nominal / crase.</li>
-                  <li>Semana 3: Coesão e coerência em textos.</li>
-                  <li>Semana 4: Revisão focada em erros recorrentes.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Raciocínio Lógico</div>
-                <div class="card-time">20–30 min</div>
-                <ul class="card-list">
-                  <li>Semana 1: Porcentagem e razão/proporção.</li>
-                  <li>Semana 2: Regra de três simples e composta.</li>
-                  <li>Semana 3: Questões numéricas variadas.</li>
-                  <li>Semana 4: Lista mista de raciocínio lógico.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Geral</div>
-                <div class="card-time">~1h por terça-feira</div>
-                <ul class="card-list">
+
+          <div class="grid-cards">
+            <article class="card br">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🇧🇷</span>Português</span
+                    >
+                    <span class="tag">Semanas 1–3: Conteúdo novo</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Redes – modelo OSI/TCP-IP, tipos de rede,
-                    dispositivos.
+                    Semana 1: Ortografia e acentuação segundo o Acordo
+                    Ortográfico.
+                  </li>
+                  <li>Semana 2: Regência verbal e nominal, uso da crase.</li>
+                  <li>Semana 3: Coesão e coerência em textos dissertativos.</li>
+                  <li>
+                    Semana 4: Revisão focada em questões onde você ainda erra.
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card log">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🧠</span>Raciocínio Lógico</span
+                    >
+                    <span class="tag">Semanas 1–3: Conteúdo novo</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
+                  <li>
+                    Semana 1: Porcentagem e razão/proporção (muitos exercícios).
+                  </li>
+                  <li>Semana 2: Regra de três simples e composta.</li>
+                  <li>Semana 3: Mistão de problemas numéricos.</li>
+                  <li>Semana 4: Lista mista de treino rápido.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card ti">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🌐</span>TI Geral</span
+                    >
+                    <span class="tag">Redes & Segurança</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
+                  <li>
+                    Semana 1: Modelo OSI/TCP-IP, tipos de rede (LAN, MAN, WAN,
+                    VPN).
                   </li>
                   <li>Semana 2: IPv4/IPv6, subnetting, CIDR, VLAN, STP.</li>
                   <li>
-                    Semana 3: Segurança da informação – CIA, mínimo privilégio,
-                    ataques comuns.
+                    Semana 3: Segurança — CIA, mínimo privilégio, tipos de
+                    ataques.
                   </li>
                   <li>Semana 4: LGPD e boas práticas de segurança.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Específico</div>
-                <div class="card-time">~30 min extras</div>
-                <ul class="card-list">
+
+            <article class="card esp">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🔗</span>TI Específico</span
+                    >
+                    <span class="tag">Integrações</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Integração REST – verbos HTTP, status codes, JSON.
+                    Semana 1: APIs REST — verbos HTTP, status codes, JSON.
                   </li>
-                  <li>Semana 2: SOAP, WSDL, XML, contratos de serviço.</li>
+                  <li>Semana 2: SOAP, XML, WSDL (conceitos principais).</li>
                   <li>Semana 3: Mensageria, filas, RabbitMQ, webhooks.</li>
-                  <li>Semana 4: Desenho de APIs (Swagger/OpenAPI).</li>
+                  <li>
+                    Semana 4: Desenho de APIs e leitura de documentação Swagger.
+                  </li>
                 </ul>
               </div>
             </article>
@@ -426,68 +869,107 @@
         <!-- QUARTA -->
         <section class="day-panel" id="quarta">
           <div class="day-header">
-            <div>
-              <div class="day-title">Quarta-feira</div>
-              <div class="day-sub">
-                Foco em bancos de dados e análise de negócios.
-              </div>
-            </div>
-            <div class="badge">
-              <span class="dot"></span> Carga aproximada: 2h/dia
+            <h2>Quarta-feira</h2>
+            <p class="day-sub">
+              Dia forte de Bancos de Dados e Análise de Negócios.
+            </p>
+            <div class="day-meta">
+              <span
+                >Ótimo momento para BD relacional, SQL e conceitos de
+                BI/negócio.</span
+              >
+              <span class="pill-time"
+                ><span class="icon">⏰</span>~2 horas</span
+              >
             </div>
           </div>
-          <div class="grid">
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Português</div>
-                <div class="card-time">30–40 min</div>
-                <ul class="card-list">
-                  <li>Semana 1: Concordância verbal e nominal.</li>
-                  <li>Semana 2: Revisão de concordância em questões.</li>
-                  <li>Semana 3: Mistura de questões de banca semelhante.</li>
-                  <li>Semana 4: Simulado de 10 questões de Português.</li>
+
+          <div class="grid-cards">
+            <article class="card br">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🇧🇷</span>Português</span
+                    >
+                    <span class="tag">Concordância & revisão</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
+                  <li>
+                    Semana 1: Concordância verbal e nominal (regras principais).
+                  </li>
+                  <li>Semana 2: Questões de concordância (concursos).</li>
+                  <li>Semana 3: Mini simulado de 10 questões.</li>
+                  <li>Semana 4: Revisão direcionada para prova.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Raciocínio Lógico</div>
-                <div class="card-time">20–30 min</div>
-                <ul class="card-list">
+
+            <article class="card log">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🧠</span>Raciocínio Lógico</span
+                    >
+                    <span class="tag">Listas e probabilidades</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>Semana 1: Sequências numéricas.</li>
                   <li>Semana 2: Estatística básica (média, mediana, moda).</li>
                   <li>Semana 3: Probabilidade básica.</li>
-                  <li>Semana 4: Revisão geral com lista mista.</li>
+                  <li>Semana 4: Lista mista de revisão.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Geral</div>
-                <div class="card-time">~1h por quarta-feira</div>
-                <ul class="card-list">
-                  <li>Semana 1: Modelagem entidade-relacionamento.</li>
-                  <li>Semana 2: SQL básico (SELECT, JOIN, agregações).</li>
+
+            <article class="card ti">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🗄</span>TI Geral</span
+                    >
+                    <span class="tag">Bancos de Dados</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
+                  <li>Semana 1: Modelo entidade-relacionamento.</li>
+                  <li>Semana 2: SQL básico — SELECT, JOIN, agregações.</li>
                   <li>Semana 3: Transações, integridade e concorrência.</li>
-                  <li>Semana 4: Exercícios SQL e revisão de BD.</li>
+                  <li>Semana 4: Exercícios SQL e revisão de conceitos.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Específico</div>
-                <div class="card-time">~30 min extras</div>
-                <ul class="card-list">
+
+            <article class="card esp">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">📊</span>TI Específico</span
+                    >
+                    <span class="tag">BI & Negócios</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>Semana 1: Conceitos de BI, ETL, OLAP, Data Warehouse.</li>
                   <li>
-                    Semana 2: Big Data e Data Lake (conceitos, casos de uso).
+                    Semana 2: Big Data e Data Lake (casos de uso típicos).
                   </li>
                   <li>
-                    Semana 3: Análise de negócios, papel do analista,
-                    stakeholders.
+                    Semana 3: Papel do analista de negócios, stakeholders,
+                    requisitos de alto nível.
                   </li>
                   <li>
-                    Semana 4: Elaboração de business case (problema → solução).
+                    Semana 4: Business case – problema, impacto, proposta de
+                    solução.
                   </li>
                 </ul>
               </div>
@@ -498,81 +980,125 @@
         <!-- QUINTA -->
         <section class="day-panel" id="quinta">
           <div class="day-header">
-            <div>
-              <div class="day-title">Quinta-feira</div>
-              <div class="day-sub">
-                Foco em governança, processos e requisitos.
-              </div>
-            </div>
-            <div class="badge">
-              <span class="dot"></span> Carga aproximada: 2h/dia
+            <h2>Quinta-feira</h2>
+            <p class="day-sub">
+              Governança, processos e requisitos – alinhado ao perfil do cargo.
+            </p>
+            <div class="day-meta">
+              <span
+                >Dia ideal para PMBOK, Agile, BPMN e Engenharia de
+                Requisitos.</span
+              >
+              <span class="pill-time"
+                ><span class="icon">⏰</span>~2 horas</span
+              >
             </div>
           </div>
-          <div class="grid">
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Português</div>
-                <div class="card-time">30–40 min</div>
-                <ul class="card-list">
+
+          <div class="grid-cards">
+            <article class="card br">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🇧🇷</span>Português</span
+                    >
+                    <span class="tag">Pontuação & texto</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Pontuação (vírgula, dois pontos, ponto e vírgula).
+                    Semana 1: Pontuação — vírgulas, dois-pontos, ponto e
+                    vírgula.
                   </li>
-                  <li>Semana 2: Coesão/coerência aplicada em textos longos.</li>
-                  <li>Semana 3: Revisão geral de temas.</li>
-                  <li>Semana 4: Foco em texto e interpretação.</li>
+                  <li>
+                    Semana 2: Coesão/coerência aplicadas em textos longos.
+                  </li>
+                  <li>Semana 3: Revisão geral de tópicos de Português.</li>
+                  <li>Semana 4: Somente interpretação de textos.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Raciocínio Lógico</div>
-                <div class="card-time">20–30 min</div>
-                <ul class="card-list">
+
+            <article class="card log">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🧠</span>Raciocínio Lógico</span
+                    >
+                    <span class="tag">Lista mista</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Situações-problema envolvendo porcentagem/regra de
-                    três.
+                    Semana 1: Problemas envolvendo porcentagem/regra de três.
                   </li>
-                  <li>Semana 2: Mistura de todas as matérias.</li>
-                  <li>Semana 3: Simulado de 10 questões de lógica.</li>
-                  <li>Semana 4: Revisão de erros.</li>
+                  <li>Semana 2: Lista mista de todas as matérias de lógica.</li>
+                  <li>Semana 3: Simulado de 10 questões cronometrado.</li>
+                  <li>Semana 4: Revisão dos erros mais frequentes.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Geral</div>
-                <div class="card-time">~1h por quinta-feira</div>
-                <ul class="card-list">
-                  <li>Semana 1: Governança de TI, PMBOK 7, Agile.</li>
+
+            <article class="card ti">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">📋</span>TI Geral</span
+                    >
+                    <span class="tag">Governança & ITIL</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 2: Scrum (papéis, eventos, artefatos) e Kanban.
+                    Semana 1: Governança de TI, PMBOK 7, visão geral de
+                    gerenciamento de projetos.
                   </li>
                   <li>
-                    Semana 3: ITIL (processos de incidentes, problemas,
-                    mudanças).
+                    Semana 2: Agile, Scrum (papéis, eventos, artefatos) e
+                    Kanban.
                   </li>
-                  <li>Semana 4: Revisão de governança + ITIL.</li>
+                  <li>
+                    Semana 3: ITIL — incidentes, problemas, mudanças, catálogo
+                    de serviços.
+                  </li>
+                  <li>Semana 4: Revisão e questões de governança/ITIL.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Específico</div>
-                <div class="card-time">~30 min extras</div>
-                <ul class="card-list">
+
+            <article class="card esp">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">📝</span>TI Específico</span
+                    >
+                    <span class="tag">Processos & Requisitos</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Modelagem de processos BPMN (eventos, atividades,
-                    gateways).
+                    Semana 1: BPMN — eventos, atividades, gateways, pools/lanes.
                   </li>
                   <li>
-                    Semana 2: Levantamento de requisitos (entrevistas,
-                    workshops).
+                    Semana 2: Técnicas de levantamento de requisitos
+                    (entrevistas, workshops, prototipação).
                   </li>
                   <li>
-                    Semana 3: Especificação de requisitos funcionais e não
-                    funcionais.
+                    Semana 3: Requisitos funcionais vs. não funcionais,
+                    priorização.
                   </li>
-                  <li>Semana 4: UX e usabilidade (heurísticas básicas).</li>
+                  <li>
+                    Semana 4: Usabilidade e UX — princípios básicos para
+                    sistemas internos.
+                  </li>
                 </ul>
               </div>
             </article>
@@ -582,319 +1108,509 @@
         <!-- SEXTA -->
         <section class="day-panel" id="sexta">
           <div class="day-header">
-            <div>
-              <div class="day-title">Sexta-feira</div>
-              <div class="day-sub">
-                Foco em engenharia de software, padrões e web.
-              </div>
-            </div>
-            <div class="badge">
-              <span class="dot"></span> Carga aproximada: 2h/dia
+            <h2>Sexta-feira</h2>
+            <p class="day-sub">
+              Fechamento da semana com engenharia de software, padrões e web.
+            </p>
+            <div class="day-meta">
+              <span>Ideal para consolidar arquitetura e programação web.</span>
+              <span class="pill-time"
+                ><span class="icon">⏰</span>~2 horas</span
+              >
             </div>
           </div>
-          <div class="grid">
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Português</div>
-                <div class="card-time">30–40 min</div>
-                <ul class="card-list">
+
+          <div class="grid-cards">
+            <article class="card br">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🇧🇷</span>Português</span
+                    >
+                    <span class="tag">Vocabulário & revisão</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Sinônimos, antônimos e vocabulário contextual.
+                    Semana 1: Sinônimos, antônimos, sentido das palavras em
+                    contexto.
                   </li>
-                  <li>Semana 2: Questões mistas de banca.</li>
+                  <li>
+                    Semana 2: Questões mistas de banca (Português completo).
+                  </li>
                   <li>Semana 3: Revisão direcionada para prova.</li>
-                  <li>Semana 4: Leitura leve / revisão geral.</li>
+                  <li>Semana 4: Leitura leve de textos + descanso mental.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Raciocínio Lógico</div>
-                <div class="card-time">20–30 min</div>
-                <ul class="card-list">
-                  <li>Semana 1: Lista mista de questões.</li>
-                  <li>Semana 2: Foco nas questões erradas.</li>
-                  <li>Semana 3: Mini simulado (5–10 questões).</li>
-                  <li>Semana 4: Revisão leve.</li>
+
+            <article class="card log">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🧠</span>Raciocínio Lógico</span
+                    >
+                    <span class="tag">Simulados</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
+                  <li>Semana 1: Lista mista de 10–15 questões.</li>
+                  <li>Semana 2: Refazer apenas as questões em que errou.</li>
+                  <li>Semana 3: Mini simulado cronometrado.</li>
+                  <li>Semana 4: Revisão leve, sem temas novos.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Geral</div>
-                <div class="card-time">~1h por sexta-feira</div>
-                <ul class="card-list">
+
+            <article class="card ti">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🧾</span>TI Geral</span
+                    >
+                    <span class="tag">Revisão da semana</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Revisão das matérias da semana (arquitetura,
-                    redes, BD, segurança).
+                    Semana 1: Revisão de arquitetura, redes, BD, segurança.
                   </li>
-                  <li>Semana 2: Lista de questões de TI mistas.</li>
+                  <li>Semana 2: Lista mista de questões FEPESE/semelhantes.</li>
                   <li>Semana 3: Simulado parcial de TI (20–25 questões).</li>
-                  <li>Semana 4: Revisão final dos resumos.</li>
+                  <li>Semana 4: Revisão de resumos e flashcards.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Específico</div>
-                <div class="card-time">~30 min extras</div>
-                <ul class="card-list">
+
+            <article class="card esp">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">⚙️</span>TI Específico</span
+                    >
+                    <span class="tag">Engenharia & Web</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>30 min</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Engenharia/Arquitetura de software, ciclo de vida.
+                    Semana 1: Ciclo de vida de software, modelos tradicionais x
+                    ágeis.
                   </li>
                   <li>
                     Semana 2: Padrões de projeto (GoF) e UML (casos de uso,
                     classes, sequência).
                   </li>
-                  <li>Semana 3: Programação Web (HTML, CSS, JS, SPA/PWA).</li>
-                  <li>Semana 4: Revisão de tudo de específico.</li>
+                  <li>Semana 3: Programação web — HTML, CSS, JS, SPA/PWA.</li>
+                  <li>Semana 4: Revisão geral de específico.</li>
                 </ul>
               </div>
             </article>
           </div>
         </section>
 
-        <!-- SABADO -->
+        <!-- SÁBADO -->
         <section class="day-panel" id="sabado">
           <div class="day-header">
-            <div>
-              <div class="day-title">Sábado</div>
-              <div class="day-sub">
-                Dia de carga pesada: 4h (2h TI Geral + 2h TI Específico) +
-                revisões leves.
-              </div>
-            </div>
-            <div class="badge">
-              <span class="dot"></span> Carga aproximada: 4h/dia
+            <h2>Sábado</h2>
+            <p class="day-sub">
+              Semanas 1–3: conteúdo novo + exercícios | Semana 4: revisão pesada
+              de provas.
+            </p>
+            <div class="day-meta">
+              <span
+                >Use o sábado como “dia de aprofundamento” com mais tempo por
+                matéria.</span
+              >
+              <span class="pill-time"
+                ><span class="icon">⏰</span>~4 horas</span
+              >
             </div>
           </div>
-          <div class="grid">
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Português</div>
-                <div class="card-time">30–40 min (manhã)</div>
-                <ul class="card-list">
+
+          <div class="grid-cards">
+            <article class="card br">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🇧🇷</span>Português</span
+                    >
+                    <span class="tag">Semanas 1–3: Aprofundamento</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>1 hora</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Revisar tudo estudado na semana (10–15 questões).
+                    Aprofundamento em interpretação de textos longos e
+                    complexos.
                   </li>
-                  <li>Semana 2: Foco em interpretação e pontuação.</li>
                   <li>
-                    Semana 3: Mini simulado de Português (10 questões
-                    cronometradas).
+                    Vozes verbais — ativa, passiva, reflexiva (transposição).
                   </li>
-                  <li>Semana 4: Revisão leve, sem sobrecarregar.</li>
+                  <li>Figuras de linguagem aplicadas a questões de prova.</li>
+                  <li>Semana 4: Simulado de Português com 20 questões.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Raciocínio Lógico</div>
-                <div class="card-time">20–30 min (manhã)</div>
-                <ul class="card-list">
-                  <li>Semana 1: Lista mista de raciocínio.</li>
-                  <li>Semana 2: Questões só de banca semelhante.</li>
-                  <li>Semana 3: Mini simulado.</li>
-                  <li>Semana 4: Revisão de fórmulas e técnicas.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Geral</div>
-                <div class="card-time">~2h (foco pesado)</div>
-                <ul class="card-list">
+
+            <article class="card log">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🧠</span>Raciocínio Lógico</span
+                    >
+                    <span class="tag">Semanas 1–3: Aprofundamento</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>1 hora</div>
+                </div>
+                <ul>
                   <li>
-                    Semana 1: Arquitetura, redes, segurança (leitura +
-                    questões).
+                    Revisão de todos os tópicos da semana com resolução
+                    comentada.
                   </li>
                   <li>
-                    Semana 2: Governança, ITIL, BD (resumos e mapas mentais).
+                    Problemas de lógica de argumentação — silogismos, falácias.
                   </li>
-                  <li>Semana 3: Simulado de TI (objetiva, no estilo prova).</li>
-                  <li>Semana 4: Revisão de anotações, só pontos fracos.</li>
+                  <li>
+                    Análise combinatória básica — arranjos, permutações,
+                    combinações.
+                  </li>
+                  <li>Semana 4: Simulado de Lógico com 20 questões.</li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">TI Específico</div>
-                <div class="card-time">~2h (foco pesado)</div>
-                <ul class="card-list">
-                  <li>Semana 1: DevOps, CI/CD, containers, microserviços.</li>
-                  <li>Semana 2: BPMN, requisitos, análise de negócios.</li>
-                  <li>Semana 3: Integrações (APIs, mensageria) + web.</li>
-                  <li>Semana 4: Simulado de específico e revisão de erros.</li>
+
+            <article class="card ti">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">💻</span>TI Geral</span
+                    >
+                    <span class="tag">Semanas 1–3: Aprofundamento</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>1 hora</div>
+                </div>
+                <ul>
+                  <li>
+                    Revisão intensiva de arquitetura, redes, segurança e BD
+                    (teoria + questões).
+                  </li>
+                  <li>
+                    Montar mapas mentais ou resumos enxutos de cada assunto.
+                  </li>
+                  <li>
+                    Semana 4: Simulado de TI Geral focado no estilo FEPESE.
+                  </li>
                 </ul>
               </div>
             </article>
+
+            <article class="card esp">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🎯</span>TI Específico</span
+                    >
+                    <span class="tag">Semanas 1–3: Aprofundamento</span>
+                  </div>
+                  <div class="chip-time"><span class="icon">⏱</span>1 hora</div>
+                </div>
+                <ul>
+                  <li>
+                    DevOps, CI/CD, containers e microserviços na prática
+                    (revisar comandos e conceitos).
+                  </li>
+                  <li>
+                    BPMN, requisitos e análise de negócios com exemplos reais.
+                  </li>
+                  <li>Integrações (REST, SOAP, mensageria) e web (SPA/PWA).</li>
+                  <li>
+                    Semana 4: Simulado de TI Específico + correção detalhada.
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <div class="rev-tip">
+            📚 <strong>Dica da semana 4:</strong> no sábado anterior à prova,
+            pare de conteúdo novo e foque em revisão de resumos e simulados
+            cronometrados.
           </div>
         </section>
 
         <!-- DOMINGO -->
         <section class="day-panel" id="domingo">
           <div class="day-header">
-            <div>
-              <div class="day-title">Domingo</div>
-              <div class="day-sub">
-                Revisão, correção de simulados e descanso ativo.
-              </div>
-            </div>
-            <div class="badge">
-              <span class="dot"></span> Carga aproximada: 4h/dia (flexível)
+            <h2>Domingo</h2>
+            <p class="day-sub">
+              Fechamento da semana: revisão, correção de simulados e descanso
+              ativo.
+            </p>
+            <div class="day-meta">
+              <span
+                >Domingo não é para se matar de estudar, e sim consolidar.</span
+              >
+              <span class="pill-time"
+                ><span class="icon">⏰</span>~4 horas flexíveis</span
+              >
             </div>
           </div>
-          <div class="grid">
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Revisão de Português</div>
-                <div class="card-time">30–40 min</div>
-                <ul class="card-list">
-                  <li>Corrigir questões da semana.</li>
-                  <li>Anotar regras que ainda confundem.</li>
-                  <li>Refazer questões que errou.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Revisão de Raciocínio</div>
-                <div class="card-time">20–30 min</div>
-                <ul class="card-list">
-                  <li>Rever fórmulas e ideias principais.</li>
-                  <li>Refazer as 5 questões que mais errou na semana.</li>
-                </ul>
-              </div>
-            </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Revisão de TI Geral</div>
-                <div class="card-time">~1h–1h30</div>
-                <ul class="card-list">
+
+          <div class="grid-cards">
+            <article class="card br">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🇧🇷</span>Revisão de Português</span
+                    >
+                    <span class="tag">Revisão semanal</span>
+                  </div>
+                  <div class="chip-time">
+                    <span class="icon">⏱</span>~40 min
+                  </div>
+                </div>
+                <ul>
                   <li>
-                    Passar pelos resumos da semana (arquitetura, redes,
-                    governança, BD).
+                    Corrigir todas as questões de Português feitas na semana.
                   </li>
                   <li>
-                    Marcar os temas que ainda geram dúvida para rever na
+                    Anotar regras que ainda causam dúvida em um “caderno de
+                    erros”.
+                  </li>
+                  <li>Refazer 5–10 questões que você errou.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card log">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🧠</span>Revisão de Lógico</span
+                    >
+                    <span class="tag">Revisão semanal</span>
+                  </div>
+                  <div class="chip-time">
+                    <span class="icon">⏱</span>~30 min
+                  </div>
+                </div>
+                <ul>
+                  <li>Rever fórmulas e conceitos mais cobrados.</li>
+                  <li>Refazer as 5 questões mais difíceis da semana.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="card ti">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">💻</span>Revisão TI Geral</span
+                    >
+                    <span class="tag">Revisão semanal</span>
+                  </div>
+                  <div class="chip-time">
+                    <span class="icon">⏱</span>~1h–1h30
+                  </div>
+                </div>
+                <ul>
+                  <li>
+                    Passar pelos resumos da semana (arquitetura, redes, BD,
+                    segurança, governança).
+                  </li>
+                  <li>
+                    Marcar temas que ainda estão fracos para reestudar na
                     segunda.
                   </li>
                 </ul>
               </div>
             </article>
-            <article class="card">
-              <div class="card-main">
-                <div class="card-title">Revisão de TI Específico</div>
-                <div class="card-time">~1h–1h30</div>
-                <ul class="card-list">
-                  <li>
-                    Revisar diagramas (BPMN, UML), fluxos de negócio e conceitos
-                    de DevOps.
-                  </li>
-                  <li>
-                    Rever integrações que mais caem (APIs REST, mensageria).
-                  </li>
+
+            <article class="card esp">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title">
+                    <span class="top"
+                      ><span class="icon">🎯</span>Revisão TI Específico</span
+                    >
+                    <span class="tag">Revisão semanal</span>
+                  </div>
+                  <div class="chip-time">
+                    <span class="icon">⏱</span>~1h–1h30
+                  </div>
+                </div>
+                <ul>
+                  <li>Rever diagramas BPMN/UML e fluxos de negócio.</li>
+                  <li>Checar anotações de DevOps, integrações e web.</li>
+                  <li>Separar dúvidas para revisar no próximo sábado.</li>
                 </ul>
               </div>
             </article>
           </div>
         </section>
 
-        <!-- SEMANA FINAL / REVISAO -->
-        <section class="day-panel" id="revisao">
+        <!-- SEMANA FINAL -->
+        <section class="day-panel" id="semana-final">
           <div class="day-header">
-            <div>
-              <div class="day-title">Semana Final (antes da prova)</div>
-              <div class="day-sub">
-                Plano de revisão geral de segunda até sábado, prova no domingo.
-              </div>
-            </div>
-            <div class="badge">
-              <span class="dot"></span> Objetivo: consolidar e descansar
+            <h2>Semana Final</h2>
+            <p class="day-sub">
+              Estratégia para a última semana antes da prova.
+            </p>
+            <div class="day-meta">
+              <span
+                >Foque em revisão, simulados e descanso. Nada de conteúdo
+                totalmente novo.</span
+              >
+              <span class="pill-time"
+                ><span class="icon">⏰</span>Ritmo moderado</span
+              >
             </div>
           </div>
+
           <div class="rev-box">
-            <div class="section-title">De segunda a quarta</div>
+            <div class="rev-section-title">Segunda a Quarta</div>
             <ul>
               <li>
-                <strong>Português:</strong> revisar apenas questões erradas, sem
-                entrar em conteúdo novo.
+                <strong>Português:</strong> apenas questões erradas e pontos
+                fracos do caderno de erros.
               </li>
               <li>
-                <strong>Raciocínio:</strong> 10 questões por dia, corrigindo com
+                <strong>Lógico:</strong> 10 questões por dia, corrigindo com
                 calma.
               </li>
               <li>
                 <strong>TI Geral:</strong> reler resumos de arquitetura, redes,
-                governança, segurança e BD.
+                segurança, BD, governança.
               </li>
               <li>
                 <strong>TI Específico:</strong> revisar BPMN, requisitos,
-                DevOps, integrações e web.
+                DevOps, integrações, web.
               </li>
             </ul>
 
-            <div class="section-title">Quinta e sexta</div>
+            <div class="rev-section-title">Quinta</div>
             <ul>
               <li>
-                Fazer <strong>um simulado completo</strong> em tempo real (se
-                possível) na quinta.
+                Realizar um <strong>simulado completo</strong> em tempo real
+                (Português, Lógico e TI).
               </li>
               <li>
-                Na sexta, corrigir esse simulado com calma, anotando cada erro.
+                Simular as condições da prova: tempo, silêncio, sem consulta.
               </li>
-              <li>Reduzir o ritmo à noite: nada de virar madrugada.</li>
             </ul>
 
-            <div class="section-title">Sábado (véspera)</div>
+            <div class="rev-section-title">Sexta</div>
             <ul>
               <li>
-                Revisão <strong>bem leve</strong>: só ler anotações e mapas
-                mentais.
+                Corrigir o simulado com muita atenção, anotando cada erro e a
+                justificativa.
               </li>
-              <li>
-                Separar documentos: RG, caneta preta/azul, comprovante, endereço
-                da prova.
-              </li>
-              <li>Definir horário de saída e testar rota mentalmente.</li>
-              <li>Dormir cedo; evitar conteúdo pesado depois das 20h.</li>
+              <li>Rever apenas o que você errou ou está esquecendo.</li>
             </ul>
 
-            <div class="section-title">Domingo (dia da prova)</div>
+            <div class="rev-section-title">Sábado (véspera)</div>
             <ul>
-              <li>Alimentação leve, chegar com antecedência.</li>
+              <li>Revisão leve: ler resumos e mapas mentais, sem forçar.</li>
               <li>
-                Nada de estudo pesado; no máximo, olhar 1–2 resumos curtos.
+                Separar documentos (RG, canetas, comprovante, endereço), ver
+                tempo de deslocamento.
               </li>
               <li>
-                Manter a cabeça fria, lembrar que você já fez a sua parte.
+                Evitar café muito tarde, dormir cedo e cuidar da alimentação.
               </li>
             </ul>
+
+            <div class="rev-section-title">Domingo (dia da prova)</div>
+            <ul>
+              <li>
+                Café da manhã leve, chegar com antecedência ao local de prova.
+              </li>
+              <li>No máximo, revisar um ou dois resumos que deem segurança.</li>
+              <li>Confiar no que foi estudado nas semanas anteriores.</li>
+            </ul>
+
+            <p class="rev-tip">
+              💡 <strong>Regra de ouro:</strong> na última semana, qualidade de
+              sono e tranquilidade valem mais do que tentar aprender algo
+              totalmente novo.
+            </p>
           </div>
         </section>
-      </div>
+      </main>
 
       <footer>
         <span
-          >Gerado para: Rafael Dolinski • Cargo: Analista TIC (Sistemas e
-          Negócios) • Edital 001/2025 CIDASC</span
+          >Plano de estudos feito para: Rafael Dolinski • Cargo: Analista TIC
+          (Sistemas e Negócios)</span
         >
         <span>Seg–Sex: ~2h • Sáb/Dom: ~4h • Prova: 15/03/2026</span>
       </footer>
     </div>
 
     <script>
-      const tabs = document.querySelectorAll(".tab-btn");
+      // Tabs
+      const tabs = document.querySelectorAll(".tab");
       const panels = document.querySelectorAll(".day-panel");
 
-      tabs.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const day = btn.getAttribute("data-day");
-          tabs.forEach((b) => b.classList.remove("active"));
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const target = tab.getAttribute("data-target");
+
+          tabs.forEach((t) => t.classList.remove("active"));
           panels.forEach((p) => p.classList.remove("active"));
-          btn.classList.add("active");
-          document.getElementById(day).classList.add("active");
+
+          tab.classList.add("active");
+          document.getElementById(target).classList.add("active");
         });
       });
+
+      // Contagem regressiva simples até 15/03/2026 00:00
+      const targetDate = new Date("2026-03-15T00:00:00-03:00").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        let diff = targetDate - now;
+        if (diff < 0) diff = 0;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("cd-days").textContent = String(days).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("cd-hours").textContent = String(
+          hours,
+        ).padStart(2, "0");
+        document.getElementById("cd-mins").textContent = String(mins).padStart(
+          2,
+          "0",
+        );
+        document.getElementById("cd-secs").textContent = String(secs).padStart(
+          2,
+          "0",
+        );
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
     </script>
   </body>
 </html>
